@@ -63,6 +63,7 @@ snake.setTurnLock = function(lock)
 	snake.turnLocked = lock
 end
 snake.walk = function()
+	-- Updates the head position to it's next value. Also updates all the tails segments to their respective newer values
 	x,y = getNextPosition()
 	local last = {}
 	last.x, last.y = snake.head.x, snake.head.y

@@ -32,10 +32,17 @@ start.breakSize = 5
 
 game = {}
 game.speed = 100 -- higher value = slower game
-game.debugMode = false
+game.debugMode = true
+game.grid = true
+
+gameState = {}
+gameState.running = "running"
+gameState.paused = "paused"
+gameState.after = "after"
+gameState.menu = "menu"
 
 view = {}
-view.scale = 32
+view.scale = 16
 view.innerMargin = 1.1
 
 constants.start = start
@@ -44,4 +51,5 @@ constants.id = ids
 constants.map = map
 constants.view = view
 constants.game = game
+constants.gameState = gameState
 return(constants)

@@ -2,6 +2,7 @@ game = {}
 
 local constants = require "constants"
 game.world = require "world"
+game.state = constants.gameState.running
 
 game.score = 0
 
@@ -22,6 +23,25 @@ game.reset = function()
 	world.fruits.clear()
 	world.generateRandomFruit()
 end
+
+function toggleDebugMode()
+	if constants.game.debugMode == false then
+		constants.game.debugMode = true
+	else
+		constants.game.debugMode = false
+	-- constants.debugMode = ~constants.debugMode
+	end
+end
+
+function toggleGrid()
+	if constants.game.grid == false then
+		constants.game.grid = true
+	else
+		constants.game.grid = false
+	-- constants.debugMode = ~constants.debugMode
+	end
+end
+
 
 function game.keyMapping(key)
 	if key == "up" then
@@ -46,6 +66,20 @@ function game.keyMapping(key)
 		game.world.speed = 5 * game.world.speed;
 	elseif key == 'w' then
 		game.world.speed = game.world.speed/5;
+	elseif key == 'z' then
+		constants.view.scale = constants.view.scale - 1
+	elseif key == 'x' then
+		constants.view.scale = constants.view.scale + 1
+	elseif key == 'd' then
+		toggleDebugMode()
+	elseif key == 'g' then
+		toggleGrid()
+	elseif key == "space" then
+		if game.state == constants.gameState.running then
+			game.state = constants.gameState.paused
+		elseif game.state == constants.gameState.paused then
+			game.state = constants.gameState.running
+		end
 	end
 end
 

@@ -36,7 +36,7 @@ end
 utils.printUnderSnake = function(obj)
 	offsetX = adjust(obj.x)
 	offsetY = adjust(constants.map.size - obj.y) + 1.1*constants.view.scale
-	love.graphics.print(obj.x..","..obj.y, offsetX, offsetY)
+	love.graphics.print(obj.x..","..obj.y, math.floor(offsetX), math.floor(offsetY))
 end
 
 utils.drawFruits = function(x,y, scale)
