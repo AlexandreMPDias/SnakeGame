@@ -21,17 +21,18 @@ ids.wall = "wall"
 ids.nothing = "nothing"
 
 map = {}
-map.size = 30
+map.size = 5
 
 start = {}
 start.x = math.ceil(map.size/2)
 start.y = math.ceil(map.size/2)
 start.direction = direction.east
-start.size = 10
+start.size = 3
 start.breakSize = 5
 
 game = {}
 game.speed = 100 -- higher value = slower game
+game.debugMode = true
 
 view = {}
 view.scale = 16

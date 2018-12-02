@@ -12,20 +12,30 @@ function adjust(value)
 	return ((constants.view.innerMargin * value) + 0.5) * constants.view.scale
 end
 
-function drawRectangle(x,y)
-	love.graphics.rectangle("fill", adjust(x), adjust(constants.map.size - y), constants.view.scale, constants.view.scale)
+function drawRectangle(x,y,fill)
+	if fill == nil then
+		fill = "fill"
+	end
+	love.graphics.rectangle(fill, adjust(x), adjust(constants.map.size - y), constants.view.scale, constants.view.scale)
 end
 
-function drawCircle(x,y)
-	love.graphics.circle("fill", adjust(x), adjust(constants.map.size - y), constants.view.scale)
+function drawCircle(x,y,fill)
+	if fill == nil then
+		fill = "fill"
+	end
+	love.graphics.circle(fill, adjust(x), adjust(constants.map.size - y), constants.view.scale)
 end
 
 utils.drawSnake = function(x,y, i)
-	love.graphics.rectangle("fill", adjust(x), adjust(constants.map.size - y), constants.view.scale/(1 + 0.1*i), constants.view.scale/(1 + 0.1*i))
+	local resizer = 1/(1 + 0.1*i)
+	local size = constants.view.scale * resizer
+	local offset = (constants.view.scale/2) * (1 - resizer)
+	love.graphics.rectangle("fill", adjust(x) + offset, adjust(constants.map.size - y) + offset, size, size)
 end
 
 utils.drawFruits = function(x,y)
-	love.graphics.rectangle("line", adjust(x), adjust(constants.map.size - y), constants.view.scale * 1.1, constants.view.scale * 1.1)
+	local radius = constants.view.scale/2
+	love.graphics.circle("line", adjust(x) + (radius), adjust(constants.map.size - y) + radius, 1.5  * radius)--, constants.view.scale * 1.1)
 end
 
 function border()

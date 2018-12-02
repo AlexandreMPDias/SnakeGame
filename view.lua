@@ -9,12 +9,15 @@ color.fruit = utils.makeColor('#DF4815', 223, 72, 21)
 view.color = color
 
 function drawMap(world)
-	love.graphics.setColor(150,150,150)--(view.color.terrain.rgb)
+	if constants.game.debugMode == true then
+		fillMap = 'line'
+	end
+	love.graphics.setColor(250,10,150,0.5)--(view.color.terrain.rgb)
 	space = 0
 	for i = 1,world.boundries do
 		for j = 1,world.boundries do
-			love.graphics.setColor(150,150,150)--(view.color.terrain.rgb)
-			utils.drawRectangle(i,j)
+			--love.graphics.setColor(150,150,150,0.5)--(view.color.terrain.rgb)
+			utils.drawRectangle(i,j,fillMap)
 		end
 	end
 end
@@ -32,13 +35,14 @@ function drawSnake(world)
 end
 
 function drawFruits(world)
-	local newest = world.fruits.getNewest()
-	--print(newest)
-	--print(utils.exibeCoords(newest))
 	love.graphics.setColor(view.color.fruit.rgb)
-	--utils.drawRectangle(newest.x, newest.y)
-	for i=1,#world.fruits do
-		utils.drawFruits(world.fruits[i].x, world.fruits[i].y)
+	if constants.game.debugMode == true then
+		for i=1,#world.fruits do
+			utils.drawFruits(world.fruits[i].x, world.fruits[i].y)
+		end
+	else
+		local newest = world.fruits.getNewest()
+		utils.drawRectangle(newest.x, newest.y)
 	end
 end
 

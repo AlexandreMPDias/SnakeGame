@@ -29,9 +29,8 @@ end
 
 world.checkCollision = function()
 	if world.fruits.isEmpty() == true then
-		world.generateRandomFruit()
+		--world.generateRandomFruit()
 	end
-	--print(utils.exibeCoords(world.fruits.getNewest())..utils.exibeCoords(world.snake.head))
 	if isSnakeOutOfBounds() then 
 		--checks collision with outter wall
 		return constants.id.wall
