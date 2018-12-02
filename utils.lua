@@ -2,8 +2,13 @@ constants = require "constants"
 
 utils = {}
 
+
+function exibeCoords(aa)
+	return '['..aa.x..' , '..aa.y..']'
+end
+
 function adjust(value)
-	print(value)
+	--print(value)
 	return ((constants.view.innerMargin * value) + 0.5) * constants.view.scale
 end
 
@@ -13,6 +18,14 @@ end
 
 function drawCircle(x,y)
 	love.graphics.circle("fill", adjust(x), adjust(constants.map.size - y), constants.view.scale)
+end
+
+utils.drawSnake = function(x,y, i)
+	love.graphics.rectangle("fill", adjust(x), adjust(constants.map.size - y), constants.view.scale/(1 + 0.1*i), constants.view.scale/(1 + 0.1*i))
+end
+
+utils.drawFruits = function(x,y)
+	love.graphics.rectangle("line", adjust(x), adjust(constants.map.size - y), constants.view.scale * 1.1, constants.view.scale * 1.1)
 end
 
 function border()
@@ -32,10 +45,6 @@ end
 
 function compareCoords(a, b)
 	return a.x == b.x and a.y == b.y
-end
-
-function exibeCoords(aa)
-	return '['..aa.x..' , '..aa.y..']'
 end
 
 utils.adjust = adjust

@@ -24,7 +24,7 @@ fruits.isEmpty = function()
 	return #fruits < 1
 end
 
-fruits.getLast = function()
+fruits.getOldest = function()
 	ar = {}
 	ar.x = fruits[1].x
 	ar.y = fruits[1].y
@@ -49,7 +49,7 @@ end
 
 fruits.clear = function()
 	for i=1 , #fruits do
-		table.remove(fruits,#fruits-1)
+		table.remove(fruits,#fruits)
 	end
 end
 
@@ -64,6 +64,6 @@ end
 -- 	print(fruits[i].x, fruits[i].y)
 -- end
 
--- print(fruits.getLast().x, fruits.getLast().y)
+-- print(fruits.getOldest().x, fruits.getOldest().y)
 
 return (fruits)

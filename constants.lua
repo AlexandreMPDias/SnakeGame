@@ -27,6 +27,8 @@ start = {}
 start.x = math.ceil(map.size/2)
 start.y = math.ceil(map.size/2)
 start.direction = direction.east
+start.size = 10
+start.breakSize = 5
 
 game = {}
 game.speed = 100 -- higher value = slower game

@@ -24,9 +24,7 @@ end
 tail.length = 0
 tail.segment = {}
 tail.increaseTail = createTailSegment
-tail.getEndPosition = function()
-	return tail.segment[1]
-end
+tail.getEndPosition = getEndPosition
 
 function getNextPosition()
 	-- Calculates based on the current Head direction, the next position of the Head
@@ -98,37 +96,31 @@ snake.isHere = function(x,y)
 	end
 end
 
+snake.isTail = function(x,y)
+	for i=1,#snake.tail.segment do
+		--print(x,y,snake.tail.segment[i].x,snake.tail.segment[i].y,x == snake.tail.segment[i].x and y == snake.tail.segment[i].y)
+		if(x == snake.tail.segment[i].x and y == snake.tail.segment[i].y) then
+			return true
+		end
+	end
+	return false
+end
+
 snake.clear = function()
 	snake.tail.segment = {}
 	snake.head.x = constants.start.x
 	snake.head.y = constants.start.y
+	snake.direction = constants.start.direction
+	local bS = constants.start.breakSize;
+	local x = constants.start.size - 1
+	for i=1,constants.start.size do
+		if i < constants.start.breakSize then
+			snake.tail.increaseTail(15-i,15)
+			x = 15 - i
+		else
+			snake.tail.increaseTail(x, 15 - (i - bS))
+		end
+	end
 end
-
--- snake.tail.increaseTail(15,15)
--- snake.tail.increaseTail(14,15)
--- snake.tail.increaseTail(13,15)
-
--- snake.walk()
--- snake.walk()
-
-
--- snake.turn(direction.north)
--- snake.turn(direction.north)
--- snake.turn(direction.south)
--- snake.turn(direction.west)
--- snake.turn(direction.east)
--- snake.turn(direction.south)
--- snake.turn(direction.north)
--- snake.turn(direction.east)
-
--- snake.walk()
--- snake.turn(direction.north)
--- snake.walk()
--- snake.turn(direction.east)
--- snake.walk()
--- snake.turn(direction.south)
--- snake.walk()
--- snake.turn(direction.west)
--- snake.walk()
 
 return (snake)

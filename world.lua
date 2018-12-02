@@ -35,11 +35,11 @@ world.checkCollision = function()
 	if isSnakeOutOfBounds() then 
 		--checks collision with outter wall
 		return constants.id.wall
-	elseif world.snake.isHere(world.snake.head) then 
+	elseif world.snake.isTail(world.snake.head.x, world.snake.head.y) then 
 		--checks collision with own tail
 		return constants.id.snake
 	elseif utils.compareCoords(world.fruits.getNewest() , world.snake.head) then
-		--checks collision with 
+		--checks collision with fruit and head
 		return constants.id.fruit
 	else
 		return constants.id.nothing
@@ -47,9 +47,10 @@ world.checkCollision = function()
 end
 
 world.checkSnakeSize = function(tailPosition)
-	if utils.compareCoords(world.fruits.getLast() , tailPosition) then
+	local oldestFruit = world.fruits.getOldest()
+	if utils.compareCoords(oldestFruit , tailPosition) then
 		world.fruits.pop()
-		world.snake.tail.increaseTail(world.fruits.getLast())
+		world.snake.tail.increaseTail(oldestFruit.x, oldestFruit.y)
 	end
 end
 

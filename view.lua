@@ -23,8 +23,11 @@ function drawSnake(world)
 	love.graphics.setColor(view.color.snake.rgb)
 	utils.drawRectangle(world.snake.head.x , world.snake.head.y)
 	tail = world.snake.tail
+--	print("Snake")
 	for i=1,#tail.segment do
-		utils.drawRectangle(tail.segment[i].x , tail.segment[i].y)
+		--io.write("\t[".. i .."]: ")
+		--utils.drawRectangle(tail.segment[i].x , tail.segment[i].y)
+		utils.drawSnake(tail.segment[i].x , tail.segment[i].y, i)
 	end
 end
 
@@ -33,7 +36,10 @@ function drawFruits(world)
 	--print(newest)
 	--print(utils.exibeCoords(newest))
 	love.graphics.setColor(view.color.fruit.rgb)
-	utils.drawRectangle(newest.x, newest.y)
+	--utils.drawRectangle(newest.x, newest.y)
+	for i=1,#world.fruits do
+		utils.drawFruits(world.fruits[i].x, world.fruits[i].y)
+	end
 end
 
 function drawBorder()

@@ -23,7 +23,6 @@ function love.update(dt)
 		if collision == id.fruit then
 			game.world.generateRandomFruit()
 			game.score = game.score + game.world.fruits.consume()
-			print(game.score)
 		elseif collision == id.wall or collision == id.snake then
 			game.reset()
 		end
