@@ -21,7 +21,7 @@ ids.wall = "wall"
 ids.nothing = "nothing"
 
 map = {}
-map.size = 5
+map.size = 15
 
 start = {}
 start.x = math.ceil(map.size/2)
@@ -32,10 +32,10 @@ start.breakSize = 5
 
 game = {}
 game.speed = 100 -- higher value = slower game
-game.debugMode = true
+game.debugMode = false
 
 view = {}
-view.scale = 16
+view.scale = 32
 view.innerMargin = 1.1
 
 constants.start = start

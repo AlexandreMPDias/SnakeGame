@@ -115,10 +115,10 @@ snake.clear = function()
 	local x = constants.start.size - 1
 	for i=1,constants.start.size do
 		if i < constants.start.breakSize then
-			snake.tail.increaseTail(15-i,15)
-			x = 15 - i
+			snake.tail.increaseTail(constants.start.x - i,constants.start.y)
+			x = constants.start.x - i
 		else
-			snake.tail.increaseTail(x, 15 - (i - bS))
+			snake.tail.increaseTail(x, constants.start.y - (i - bS))
 		end
 	end
 end

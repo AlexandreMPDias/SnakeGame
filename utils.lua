@@ -33,16 +33,22 @@ utils.drawSnake = function(x,y, i)
 	love.graphics.rectangle("fill", adjust(x) + offset, adjust(constants.map.size - y) + offset, size, size)
 end
 
-utils.drawFruits = function(x,y)
+utils.printUnderSnake = function(obj)
+	offsetX = adjust(obj.x)
+	offsetY = adjust(constants.map.size - obj.y) + 1.1*constants.view.scale
+	love.graphics.print(obj.x..","..obj.y, offsetX, offsetY)
+end
+
+utils.drawFruits = function(x,y, scale)
 	local radius = constants.view.scale/2
-	love.graphics.circle("line", adjust(x) + (radius), adjust(constants.map.size - y) + radius, 1.5  * radius)--, constants.view.scale * 1.1)
+	love.graphics.circle("line", adjust(x) + (radius), adjust(constants.map.size - y) + radius, scale  * radius)--, constants.view.scale * 1.1)
 end
 
 function border()
 	x = adjust(1)
 	y = adjust(0)
-	w = adjust(constants.map.size)
-	h = adjust(constants.map.size)
+	w = adjust(constants.map.size) - constants.view.scale/2
+	h = adjust(constants.map.size) - constants.view.scale/2
 	love.graphics.rectangle("line", x,y, w,h)
 end
 
