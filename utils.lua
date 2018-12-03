@@ -2,7 +2,6 @@ constants = require "constants"
 
 utils = {}
 
-
 function exibeCoords(aa)
 	return '['..aa.x..' , '..aa.y..']'
 end
@@ -16,40 +15,44 @@ function drawRectangle(x,y,fill)
 	if fill == nil then
 		fill = "fill"
 	end
-	love.graphics.rectangle(fill, adjust(x), adjust(constants.map.size - y), constants.view.scale, constants.view.scale)
+	love.graphics.rectangle(fill, adjust(x-1), adjust(constants.map.size - y), constants.view.scale, constants.view.scale)
 end
 
 function drawCircle(x,y,fill)
 	if fill == nil then
 		fill = "fill"
 	end
-	love.graphics.circle(fill, adjust(x), adjust(constants.map.size - y), constants.view.scale)
+	love.graphics.circle(fill, adjust(x-1), adjust(constants.map.size - y), constants.view.scale)
 end
 
 utils.drawSnake = function(x,y, i)
 	local resizer = 1/(1 + 0.1*i)
 	local size = constants.view.scale * resizer
 	local offset = (constants.view.scale/2) * (1 - resizer)
-	love.graphics.rectangle("fill", adjust(x) + offset, adjust(constants.map.size - y) + offset, size, size)
+	love.graphics.rectangle("fill", adjust(x-1) + offset, adjust(constants.map.size - y) + offset, size, size)
 end
 
 utils.printUnderSnake = function(obj)
-	offsetX = adjust(obj.x)
+	offsetX = adjust(obj.x-1)
 	offsetY = adjust(constants.map.size - obj.y) + 1.1*constants.view.scale
 	love.graphics.print(obj.x..","..obj.y, math.floor(offsetX), math.floor(offsetY))
 end
 
 utils.drawFruits = function(x,y, scale)
 	local radius = constants.view.scale/2
-	love.graphics.circle("line", adjust(x) + (radius), adjust(constants.map.size - y) + radius, scale  * radius)--, constants.view.scale * 1.1)
+	love.graphics.circle("line", adjust(x-1) + (radius), adjust(constants.map.size - y) + radius, scale  * radius)--, constants.view.scale * 1.1)
 end
 
 function border()
-	x = adjust(1)
+	x = adjust(0)
 	y = adjust(0)
-	w = adjust(constants.map.size) - constants.view.scale/2
-	h = adjust(constants.map.size) - constants.view.scale/2
+	w = adjust(constants.map.size - 1) + constants.view.scale/2
+	h = adjust(constants.map.size - 1) + constants.view.scale/2
 	love.graphics.rectangle("line", x,y, w,h)
+end
+
+function resize()
+	love.window.setMode(adjust(constants.map.size) + constants.view.scale/2, adjust(constants.map.size) + constants.view.scale/2)
 end
 
 function makeColor(hex, r, g, b)
@@ -70,4 +73,7 @@ utils.drawCircle = drawCircle
 utils.border = border
 utils.compareCoords = compareCoords
 utils.exibeCoords = exibeCoords
+utils.resize = resize
+
+utils.resize()
 return (utils)

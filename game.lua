@@ -1,5 +1,6 @@
 game = {}
 
+local utils = require "utils"
 local constants = require "constants"
 game.world = require "world"
 game.state = constants.gameState.running
@@ -54,12 +55,6 @@ function game.keyMapping(key)
 		game.nextTurn = direction.east
 	elseif key == "up" then
 			game.world.snake.turn(direction.north)
-	-- elseif key == "down" then
-	-- 	game.world.snake.turn(direction.south)
-	-- elseif key == "left" then
-	-- 	game.world.snake.turn(direction.west)
-	-- elseif key == "right" then
-	-- 	game.world.snake.turn(direction.east)
 	elseif key == 'r' then
 		game.reset()
 	elseif key == 'q' then
@@ -68,8 +63,10 @@ function game.keyMapping(key)
 		game.world.speed = game.world.speed/5;
 	elseif key == 'z' then
 		constants.view.scale = constants.view.scale - 1
+		utils.resize()
 	elseif key == 'x' then
 		constants.view.scale = constants.view.scale + 1
+		utils.resize()
 	elseif key == 'd' then
 		toggleDebugMode()
 	elseif key == 'g' then

@@ -8,6 +8,8 @@ color.terrain = utils.makeColor('#A7784E', 167, 120, 78)
 color.fruit = utils.makeColor('#DF4815', 223, 72, 21)
 view.color = color
 
+love.window.setTitle("Snake Game")
+
 function drawMap(world)
 	if constants.game.debugMode == true then
 		fillMap = 'line'
@@ -55,10 +57,14 @@ function drawBorder()
 	utils.border()
 end
 
+function resize(width, height)
+	love.window.setMode(width, height)
+end
 
 view.setColor = setColor
 view.drawMap = drawMap
 view.drawSnake = drawSnake
 view.drawFruits = drawFruits
 view.drawBorder = drawBorder
+view.resize = resize
 return (view)

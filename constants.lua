@@ -21,7 +21,7 @@ ids.wall = "wall"
 ids.nothing = "nothing"
 
 map = {}
-map.size = 15
+map.size = 30
 
 start = {}
 start.x = math.ceil(map.size/2)
@@ -42,8 +42,10 @@ gameState.after = "after"
 gameState.menu = "menu"
 
 view = {}
-view.scale = 16
+view.scale = 10
 view.innerMargin = 1.1
+view.offset = 10
+
 
 constants.start = start
 constants.direction = direction

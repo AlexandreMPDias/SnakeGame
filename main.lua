@@ -1,7 +1,7 @@
-
 game = require "game"
 view = require "view"
 constants = require "constants"
+config = require "config"
 
 local direction = constants.direction
 local speedCheck = 0
