@@ -49,10 +49,12 @@ function border()
 	w = adjust(constants.map.size - 1) + constants.view.scale/2
 	h = adjust(constants.map.size - 1) + constants.view.scale/2
 	love.graphics.rectangle("line", x,y, w,h)
+
+	love.graphics.print("Eu te amo amor <3", w/2 - 100, h + 35)
 end
 
 function resize()
-	love.window.setMode(adjust(constants.map.size) + constants.view.scale/2, adjust(constants.map.size) + constants.view.scale/2)
+	love.window.setMode(adjust(constants.map.size) + constants.view.scale/2, adjust(constants.map.size) + constants.view.scale/2 + constants.view.offsetY)
 end
 
 function makeColor(hex, r, g, b)

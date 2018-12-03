@@ -44,7 +44,7 @@ gameState.menu = "menu"
 view = {}
 view.scale = 10
 view.innerMargin = 1.1
-view.offset = 10
+view.offsetY = 100
 
 
 constants.start = start
