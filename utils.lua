@@ -49,8 +49,6 @@ function border()
 	w = adjust(constants.map.size - 1) + constants.view.scale/2
 	h = adjust(constants.map.size - 1) + constants.view.scale/2
 	love.graphics.rectangle("line", x,y, w,h)
-
-	love.graphics.print("Eu te amo amor <3", w/2 - 100, h + 35)
 end
 
 function resize()

@@ -57,6 +57,12 @@ function drawBorder()
 	utils.border()
 end
 
+function drawScore(game)
+	w = utils.adjust(constants.map.size - 1) + constants.view.scale/2
+	h = utils.adjust(constants.map.size - 1) + constants.view.scale/2
+	love.graphics.print("Score: " .. game.score, w/2 - 100, h + 35)
+end
+
 function resize(width, height)
 	love.window.setMode(width, height)
 end
@@ -67,4 +73,5 @@ view.drawSnake = drawSnake
 view.drawFruits = drawFruits
 view.drawBorder = drawBorder
 view.resize = resize
+view.drawScore = drawScore
 return (view)

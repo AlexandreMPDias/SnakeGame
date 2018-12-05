@@ -32,7 +32,7 @@ start.breakSize = 5
 
 game = {}
 game.speed = 100 -- higher value = slower game
-game.debugMode = true
+game.debugMode = false
 game.grid = true
 
 gameState = {}

@@ -46,4 +46,5 @@ function love.draw()
 	view.drawSnake(game.world)
 	view.drawFruits(game.world)
 	view.drawBorder()
+	view.drawScore(game)
 end

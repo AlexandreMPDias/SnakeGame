@@ -19,7 +19,6 @@ end
 
 game.reset = function()
 	game.score = 0
-	game.world.speed = constants.game.speed
 	world.snake.clear()
 	world.fruits.clear()
 	world.generateRandomFruit()
@@ -57,6 +56,7 @@ function game.keyMapping(key)
 			game.world.snake.turn(direction.north)
 	elseif key == 'r' then
 		game.reset()
+		game.world.speed = constants.game.speed
 	elseif key == 'q' then
 		game.world.speed = 5 * game.world.speed;
 	elseif key == 'w' then
