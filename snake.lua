@@ -97,6 +97,24 @@ snake.isHere = function(x,y)
 	end
 end
 
+snake.avaiableDirections = function()
+	ret = {}
+	if(snake.direction == direction.north) then
+		ret[0] = direction.west
+		ret[1] = direction.east
+	elseif(snake.direction == direction.south) then
+		ret[0] = direction.east
+		ret[1] = direction.west
+	elseif(snake.direction == direction.west) then
+		ret[0] = direction.south
+		ret[1] = direction.north
+	elseif(snake.direction == direction.east) then
+		ret[0] = direction.north
+		ret[1] = direction.south
+	end
+	return ret
+end
+
 snake.isTail = function(x,y)
 	for i=1,#snake.tail.segment do
 		--print(x,y,snake.tail.segment[i].x,snake.tail.segment[i].y,x == snake.tail.segment[i].x and y == snake.tail.segment[i].y)

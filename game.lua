@@ -29,7 +29,6 @@ function toggleDebugMode()
 		constants.game.debugMode = true
 	else
 		constants.game.debugMode = false
-	-- constants.debugMode = ~constants.debugMode
 	end
 end
 
@@ -38,23 +37,35 @@ function toggleGrid()
 		constants.game.grid = true
 	else
 		constants.game.grid = false
-	-- constants.debugMode = ~constants.debugMode
 	end
 end
 
 
 function game.keyMapping(key)
-	if key == "up" then
-		game.nextTurn = direction.north
-	elseif key == "down" then
-		game.nextTurn = direction.south
-	elseif key == "left" then
-		game.nextTurn = direction.west
-	elseif key == "right" then
-		game.nextTurn = direction.east
-	elseif key == "up" then
-			game.world.snake.turn(direction.north)
-	elseif key == 'r' then
+	if constants.controller.active == constants.controller.options.keyboard then
+		if key == "up" then
+			game.nextTurn = direction.north
+		elseif key == "down" then
+			game.nextTurn = direction.south
+		elseif key == "left" then
+			game.nextTurn = direction.west
+		elseif key == "right" then
+			game.nextTurn = direction.east
+		end
+	elseif constants.controller.active == constants.controller.options.nodeMCU then
+		local nextDirection = game.world.snake.avaiableDirections()
+		local CC = nextDirection[0]
+		local CW = nextDirection[1]
+		local botao_esquerdo_foi_clicado = ( key == "left" )
+		local botao_direito_foi_clicado = ( key == "right" )
+
+		if botao_esquerdo_foi_clicado then
+			game.nextTurn = CC
+		elseif botao_direito_foi_clicado then
+			game.nextTurn = CW
+		end
+	end
+	if key == 'r' then
 		game.reset()
 		game.world.speed = constants.game.speed
 	elseif key == 'q' then
@@ -80,4 +91,4 @@ function game.keyMapping(key)
 	end
 end
 
-return (game)
+return (game) 

@@ -32,7 +32,7 @@ start.breakSize = 5
 
 game = {}
 game.speed = 100 -- higher value = slower game
-game.debugMode = false
+game.debugMode = true
 game.grid = true
 
 gameState = {}
@@ -46,6 +46,11 @@ view.scale = 10
 view.innerMargin = 1.1
 view.offsetY = 100
 
+controller = {}
+controller.options = {}
+controller.options.nodeMCU = 1
+controller.options.keyboard = 2
+controller.active = 1
 
 constants.start = start
 constants.direction = direction
@@ -53,5 +58,6 @@ constants.id = ids
 constants.map = map
 constants.view = view
 constants.game = game
+constants.controller = controller
 constants.gameState = gameState
 return(constants)
