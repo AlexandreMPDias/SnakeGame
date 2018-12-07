@@ -2,16 +2,19 @@ game = require "game"
 view = require "view"
 constants = require "constants"
 config = require "config"
+mqttListener = require "mqttListener"
 
 local direction = constants.direction
 local speedCheck = 0
 local id = constants.id
 
 function love.load()
+  mqttListener.start(game.keyMapping)
 	game.reset()
 end
 
 function love.update(dt)
+  mqttListener.check()
 	if game.state == constants.gameState.running then
 		speedCheck = speedCheck + dt
 		if speedCheck > 10/game.world.speed then

@@ -26,7 +26,7 @@ function drawCircle(x,y,fill)
 end
 
 utils.drawSnake = function(x,y, i)
-	local resizer = 1/(1 + 0.1*i)
+	local resizer = (0.95 - 0.5) * math.pow(0.93,i) + 0.5-- 1/(1 + 0.01 * i)
 	local size = constants.view.scale * resizer
 	local offset = (constants.view.scale/2) * (1 - resizer)
 	love.graphics.rectangle("fill", adjust(x-1) + offset, adjust(constants.map.size - y) + offset, size, size)
@@ -58,7 +58,7 @@ end
 function makeColor(hex, r, g, b)
 	a = {}
 	a.hex = hex
-	a.rgb = { r , g  , b }
+	a.rgb = { r/255 , g/255  , b/255 }
 	return a
 end
 

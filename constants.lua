@@ -27,8 +27,8 @@ start = {}
 start.x = math.ceil(map.size/2)
 start.y = math.ceil(map.size/2)
 start.direction = direction.east
-start.size = 3
-start.breakSize = 5
+start.size = 5
+start.breakSize = 3
 
 game = {}
 game.speed = 100 -- higher value = slower game
@@ -60,4 +60,4 @@ constants.view = view
 constants.game = game
 constants.controller = controller
 constants.gameState = gameState
-return(constants)
+return (constants)
